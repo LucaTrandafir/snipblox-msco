@@ -6,17 +6,17 @@ from dotenv import load_dotenv
 import asyncio
 load_dotenv()
 
-RobloxCookie = os.getenv("COOKIE")
+
 APIKEY = os.getenv("API_KEY")
 
-
-client = Client(RobloxCookie)
 
 app = FastAPI()
 
 
 @app.get("/group/promote/")
-async def read_items(user_name: str, key: str,groupid: int):
+async def read_items(user_name: str, key: str, groupid: int, cookie: str):
+    client = Client(cookie)
+    
     if key == APIKEY:
      group = await client.get_group(groupid)
      usernameinsystem = await client.get_user_by_username(user_name)
@@ -28,7 +28,9 @@ async def read_items(user_name: str, key: str,groupid: int):
         return "Incorrect key"
 
 @app.get("/group/demote/")
-async def read_items(user_name: str, key: str, groupid: int):
+async def read_items(user_name: str, key: str, groupid: int, cookie: str):
+    client = Client(cookie)
+    
     if key == APIKEY:
      group = await client.get_group(groupid)
      usernameinsystem = await client.get_user_by_username(user_name)
@@ -40,7 +42,9 @@ async def read_items(user_name: str, key: str, groupid: int):
         return "Incorrect key"
 
 @app.get("/group/rank/")
-async def read_items(user_name: str, key: str, groupid: int, role_number: int):
+async def read_items(user_name: str, key: str, groupid: int, cookie: str):
+    client = Client(cookie)
+    
     if key == APIKEY:
      group = await client.get_group(groupid)
      target = await group.get_member_by_username(user_name)
@@ -50,7 +54,9 @@ async def read_items(user_name: str, key: str, groupid: int, role_number: int):
         return "Incorrect key"
 
 @app.get("/group/members/")
-async def read_items(key: str, groupid: int):
+async def read_items(user_name: str, key: str, groupid: int, cookie: str):
+    client = Client(cookie)
+    
     if key == APIKEY:
      group = await client.get_group(groupid)
      return (group.member_count)
