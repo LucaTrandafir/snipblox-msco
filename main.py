@@ -14,7 +14,7 @@ app = FastAPI()
 
 
 @app.get("/group/promote/")
-async def read_items(user_name: str, key: str, groupid: int, cookie: str):
+async def read_items(user_name: str, key: str, groupid: int, role_number: int, cookie: str):
     client = Client(cookie)
     
     if key == APIKEY:
@@ -28,7 +28,7 @@ async def read_items(user_name: str, key: str, groupid: int, cookie: str):
         return "Incorrect key"
 
 @app.get("/group/demote/")
-async def read_items(user_name: str, key: str, groupid: int, cookie: str):
+async def read_items(user_name: str, key: str, groupid: int, role_number: int, cookie: str):
     client = Client(cookie)
     
     if key == APIKEY:
@@ -42,7 +42,7 @@ async def read_items(user_name: str, key: str, groupid: int, cookie: str):
         return "Incorrect key"
 
 @app.get("/group/rank/")
-async def read_items(user_name: str, key: str, groupid: int, cookie: str):
+async def read_items(user_name: str, key: str, groupid: int, role_number: int, cookie: str):
     client = Client(cookie)
     
     if key == APIKEY:
