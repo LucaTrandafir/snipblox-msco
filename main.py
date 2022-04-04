@@ -14,7 +14,7 @@ app = FastAPI()
 
 
 @app.get("/group/promote/")
-async def read_items(user_name: str, groupid: int, role_number: int, cookie: str):
+async def read_items(user_name: str, groupid: int, cookie: str):
     client = Client(cookie)
     
 
@@ -27,7 +27,7 @@ async def read_items(user_name: str, groupid: int, role_number: int, cookie: str
 
 
 @app.get("/group/demote/")
-async def read_items(user_name: str, groupid: int, role_number: int, cookie: str):
+async def read_items(user_name: str, groupid: int, cookie: str):
     client = Client(cookie)
     
  
